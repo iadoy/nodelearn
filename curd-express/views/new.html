@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>添加学生</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+      <form action="/students/new" method="POST">
+          <div class="form-group">
+            <label for="exampleInputEmail1">name</label>
+            <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputText">gender</label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" id="inlineRadio1" value="0"> 男
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="gender" id="inlineRadio2" value="1"> 女
+              </label>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputText">age</label>
+            <input type="number" name="age" class="form-control" id="exampleInputFile">
+          </div>
+          <div class="form-group">
+              <label for="exampleInputText">hobbies</label>
+              <input type="text" name="hobbies" class="form-control" id="exampleInputFile">
+            </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+  </body>
+</html>
