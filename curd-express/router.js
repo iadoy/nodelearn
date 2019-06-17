@@ -7,7 +7,7 @@ let router = express.Router()
 router.get('/students', function(req, res){
   utils.find(function(err, students){
     if(err){
-      return res.status(500).send('failed')
+      return res.status(500).send('failed...')
     }
     res.render('index.html', {
       fruits: [
@@ -25,17 +25,23 @@ router.get('/students/new', function(req, res){
 })
 router.post('/students/new', function(req, res){
   //console.log(req.body)
-  utils.save(req.body, function(err){
+  new utils(req.body).save(function(err){
     if(err){
       return res.status(500).send('failed')
     }
     res.redirect('/students')
   })
+  // utils.save(req.body, function(err){
+  //   if(err){
+  //     return res.status(500).send('failed')
+  //   }
+  //   res.redirect('/students')
+  // })
 })
 router.get('/students/edit', function(req, res){
-  utils.findbyid(req.query.id, function(err, student){
+  utils.findById(req.query.id, function(err, student){
     if(err){
-      return res.status(500).send('failed')
+      return res.status(500).send('failed...')
     }
     //console.log(student)
     res.render('edit.html',{
@@ -45,7 +51,7 @@ router.get('/students/edit', function(req, res){
 })
 router.post('/students/edit', function(req, res){
   //console.log(req.body)
-  utils.update(req.body, function(err){
+  utils.findByIdAndUpdate(req.body.id, req.body, function(err){
     if(err){
       return res.status(500).send('failed')
     }
@@ -53,7 +59,8 @@ router.post('/students/edit', function(req, res){
   })
 })
 router.get('/students/delete', function(req, res){
-  utils.delete(req.query.id, function(err){
+  console.log(req.query)
+  utils.findByIdAndDelete(req.query.id, function(err){
     if(err){
       return res.status(500).send('failed')
     }
